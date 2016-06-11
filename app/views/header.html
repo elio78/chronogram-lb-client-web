@@ -17,10 +17,14 @@
                     <li ng-class="{active: stateis('app.aboutus')}"><a ui-sref="app.aboutus">
                         <span class="glyphicon glyphicon-info-sign"
                          aria-hidden="true"></span> About</a></li>
-                    <li ng-class="{active: stateis('app.menu') || stateis('app.dishdetails')}"><a ui-sref="app.menu">
+                    <li ng-class="{active: stateis('app.chronogram') || stateis('app.chronogram')}"><a ui-sref="app.chronogram">
                          <span class="glyphicon glyphicon-list-alt"
                          aria-hidden="true"></span> 
-                         Menu</a></li>
+                         Chronograms</a></li>
+                    <li ng-class="{active: stateis('app.tasks') || stateis('app.tasks')}"><a ui-sref="app.tasks">
+                         <span class="glyphicon glyphicon-list-alt"
+                         aria-hidden="true"></span> 
+                         Tasks</a></li>
                      <li ng-class="{active: stateis('app.favorites')}"><a ui-sref="app.favorites">
                      <i class="fa fa-heart-o"></i> Favorites</a></li>
                      <li ng-class="{active: stateis('app.contactus')}"><a ui-sref="app.contactus">
@@ -49,14 +53,12 @@
         <div class="container">
             <div class="row row-header">
                 <div class="col-xs-12 col-sm-8">
-                    <h1>Ristorante con Fusion</h1>
-                    <p style="padding:40px;"></p>
-                    <p>We take inspiration from the World's best cuisines, and create
-                     a unique fusion experience. Our lipsmacking creations will 
-                     tickle your culinary senses!</p>
+                    <h1>Chronogram</h1>
+                    <p style="padding:20px;"></p>
+                    <p>Define chronograms, tasks and share their progression!</p>
                 </div>
                 <div class="col-xs-12 col-sm-2">
-                <p style="padding:20px;"></p>
+                <p style="padding:40px;"></p>
                 <img src="images/logo.png" class="img-responsive">
                 </div>
                 <div class="col-xs-12 col-sm-2">

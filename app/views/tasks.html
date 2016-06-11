@@ -4,19 +4,19 @@
             <div class="col-xs-12">
                <ul class="breadcrumb">
                    <li><a href="index.html">Home</a></li>
-                   <li class="active">Chronograms</li>
+                   <li class="active">Tasks</li>
                </ul>
             </div>
             <div class="col-xs-12">
-               <h3>Chronograms</h3>
+               <h3>Tasks</h3>
                <hr>
             </div>
         </div>
         <div class="row row-content">
-            <div class="col-xs-12" ng-if="!showMenu">
+            <div class="col-xs-12" ng-if="!showTask">
                 <h3>{{message}}</h3>
             </div>
-            <div class="col-xs-12" ng-if="showMenu">
+            <div class="col-xs-12" ng-if="showTask">
                  <button ng-click="toggleDetails()" class="btn btn-xs btn-primary pull-right"
                     type="button">
                     {{showDetails ? 'Hide Details':'Show Details'}}
@@ -30,7 +30,7 @@
                     ng-class="{active:isSelected(1)}">
                     <a ng-click="select(1)"
                      aria-controls="All"
-                    role="tab">All</a></li>
+                    role="tab">All Tasks</a></li>
                     <li role="presentation"
                     ng-class="{active:isSelected(2)}">
                     <a ng-click="select(2)"
@@ -55,18 +55,19 @@
              
                 <div class="tab-content">
                <ul class="media-list tab-pane fade in active">
-                <li class="media" ng-repeat="dish in Chronograms | filter:filtText">
+                <li class="media" ng-repeat="task in tasks | filter:filtText">
                     <div class="media-left media-middle">
-                        <a ui-sref="app.chronogramDetails({id: dish.id})">
+                        <a ui-sref="app.taskdetails({id: task.id})">
                         <img class="media-object img-thumbnail"
-                        ng-src={{"images/"+chronogram.status+".png"}} alt="chronogram">
+                        ng-src="/images/{{task.status}}.png" style="width: 100px; height: 100px" alt="task">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{dish.name}}
-                        <span class="label label-danger label-xs">{{dish.label}}</span>
-                        <span class="badge">{{dish.price/100 | currency}}</span></h2>
-                        <p ng-show="showDetails">{{dish.description}}</p>
+                        <h2 class="media-heading">{{task.name}}
+                        <span class="label label-danger label-xs">{{task.status}}</span>
+                        <span class="badge">{{task.plannedDuration}}</span></h2>
+                        <p ng-show="showDetails">{{task.description}}</p>
+                        <p ng-show="showDetails">{{task.chronogramsId}}</p>
                          <button  ng-show="showFavorites" ng-click="addToFavorites(dish.id)" class="btn btn-xs btn-default pull-right"
                     type="button">
                           <i class="fa fa-heart"></i>

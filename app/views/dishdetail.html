@@ -5,11 +5,11 @@
                <ul class="breadcrumb">
                    <li><a href="index.html">Home</a></li>
                    <li><a href="index.html#/menu">Menu</a></li>
-                   <li class="active">Dish Details</li>
+                   <li class="active">Chronogram Details</li>
                </ul>
             </div>
             <div class="col-xs-12">
-               <h3>Dish Details</h3>
+               <h3>Chronogram Details</h3>
                <hr>
             </div>
         </div>
@@ -31,19 +31,19 @@
                     </div>
                     <div class="media-body">
                         <h2 class="media-heading">{{dish.name}} 
-                        <span class="label label-danger">{{dish.label}}</span> 
-                        <span class="badge">{{dish.price/100 | currency}}</span></h2>
+                        <span class="label label-danger">{{dish.status}}</span> 
+                        <span class="badge">{{dish.plannedDuration}}</span></h2>
                         <p>{{dish.description}}</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-9 col-xs-offset-1">
-                   <h4>Customer Comments &nbsp;&nbsp;&nbsp;
+                   <h4>Customer Histories &nbsp;&nbsp;&nbsp;
                        <small>Sort by: &nbsp; 
                             <input type="text" ng-model="orderText"></p>   
                        </small></h4>
                     <ul class="list-unstyled">
-                        <li ng-repeat="comment in dish.comments | orderBy:orderText">
+                        <li ng-repeat="comment in dish.Histories | orderBy:orderText">
                           <blockquote>
                              <p>{{comment.rating}} Stars</p>
                              <p>{{comment.comment}}</p>
@@ -88,13 +88,13 @@
                             </label>
                         </div>
                     </div>                    
-                    <div class="form-group"  ng-class="{ 'has-error' : commentForm.comments.$error.required && !commentForm.comments.$pristine }">
-                        <label for="comments" class="col-sm-2 control-label">Your Comments</label>
+                    <div class="form-group"  ng-class="{ 'has-error' : commentForm.Histories.$error.required && !commentForm.Histories.$pristine }">
+                        <label for="Histories" class="col-sm-2 control-label">Your Histories</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="12" name="comments"
+                            <textarea class="form-control" rows="12" name="Histories"
                                 ng-model="mycomment.comment" required>
                             </textarea>
-                         <span ng-show="commentForm.comments.$error.required && !commentForm.comments.$pristine" class="help-block">Your comments are required.</span>
+                         <span ng-show="commentForm.Histories.$error.required && !commentForm.Histories.$pristine" class="help-block">Your Histories are required.</span>
                        </div>
                     </div> 
                     <div class="form-group">

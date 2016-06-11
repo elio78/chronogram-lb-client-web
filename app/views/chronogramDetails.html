@@ -1,0 +1,112 @@
+<div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Tasks</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Chronogram affected tasks</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+            <div class="col-xs-12" ng-if="!showTask">
+                <h3>{{message}}</h3>
+            </div>
+            <div class="col-xs-12" ng-if="showTask">
+                 <button ng-click="toggleDetails()" class="btn btn-xs btn-primary pull-right"
+                    type="button">
+                    {{showDetails ? 'Hide Details':'Show Details'}}
+                </button>
+                
+                <button ng-click="openNewTask()" class="btn btn-xs btn-info pull-right"
+                        type="button">
+                            Create Task
+                    </button>
+ 		     <button ng-click="toggleDelete()" class="btn btn-xs btn-warning pull-right"
+                    type="button">
+		          {{showDelete ? 'Hide Delete Button':'Show Delete Button'}}
+                </button>
+            </div>
+                <div class="cols-xs-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"
+                    ng-class="{active:isSelected(1)}">
+                    <a ng-click="select(1)"
+                     aria-controls="All"
+                    role="tab">All Tasks</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(2)}">
+                    <a ng-click="select(2)"
+                    aria-controls="defined"
+                     role="tab">Defined</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(3)}">
+                    <a ng-click="select(3)"
+                     aria-controls="started"
+                     role="tab">Started</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(4)}">
+                    <a  ng-click="select(4)"
+                     aria-controls="delayed"
+                     role="tab">Delayed</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(5)}">
+                    <a  ng-click="select(5)"
+                     aria-controls="terminated"
+                     role="tab">Terminated</a></li>
+                </ul>
+             </div>
+                <div class="tab-content">  
+                    <div class="media-body">
+                        <div class="tab-content">
+                            <ul class="media-list tab-pane fade in active">
+                                <li class="media">
+                                    <div class="media-left media-middle">
+                                        <a>
+                                        <img class="media-object img-thumbnail" ng-src="/images/{{chronogram.status}}.png" style="width: 100px; height: 100px" alt="chronogram">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h2 class="media-heading">{{chronogram.name}}
+                                        <span class="label label-danger label-xs">{{chronogram.status}}</span>
+                                        <span class="badge">{{chronogram.plannedDuration}}</span></h2>
+                                        <p>{{chronogram.description}}</p>
+                                        <p>{{chronogram.id}}</p>
+                                    </div>
+                                </li>
+                                <li class="media" ng-repeat="task in tasks | filter:{chronogramsId: chronogram.id, status: filtText}">
+                                    <div class="media-left media-middle">
+                                        <a ui-sref="app.taskDetails({id: task.id})">
+                                        <img class="media-object img-thumbnail"
+                                        ng-src="/images/{{task.status}}.png" style="width: 100px; height: 100px" alt="task">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h2 class="media-heading">{{task.name}}
+                                        <span class="label label-danger label-xs">{{task.status}}</span>
+                                        <span class="badge">{{task.plannedDuration}}</span></h2>
+                                        <p ng-show="showDetails">{{task.description}}</p>
+                                        <p ng-show="showDetails">{{task.chronogramsId}}</p>
+                                        <p ng-show="showDetails">{{task.id}}</p>
+                                        <p ng-show="showDetails">responsibles : {{task.responsibles}}</p>
+                                        <button  ng-show="showDelete" ng-click="deleteChronogram(chronogram.id)" class="btn btn-xs btn-default pull-right"
+                    type="button">
+                          <i class="fa fa-trash"></i>
+                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+ 

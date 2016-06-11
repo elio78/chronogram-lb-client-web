@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('confusionApp', ['ui.router','ngResource','ngDialog', 'lbServices'])
+angular.module('chronogramApp', ['ui.router','ngResource','ngDialog', 'lbServices'])
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
         
@@ -46,23 +46,44 @@ angular.module('confusionApp', ['ui.router','ngResource','ngDialog', 'lbServices
             })
 
             // route for the menu page
-            .state('app.menu', {
-                url: 'menu',
+            .state('app.chronogram', {
+                url: 'chronograms',
                 views: {
                     'content@': {
-                        templateUrl : 'views/menu.html',
-                        controller  : 'MenuController'
+                        templateUrl : 'views/chronogram.html',
+                        controller  : 'ChronogramController'
                     }
                 }
             })
 
-            // route for the dishdetail page
-            .state('app.dishdetails', {
+            // route for the chronogram details page
+            .state('app.chronogramDetails', {
                 url: 'menu/:id',
                 views: {
                     'content@': {
-                        templateUrl : 'views/dishdetail.html',
-                        controller  : 'DishDetailController'
+                        templateUrl : 'views/chronogramDetails.html',
+                        controller  : 'ChronogramDetailController'
+                   }
+                }
+            })
+        
+            // route for the taks list page
+            .state('app.tasks', {
+                url: 'tasks/:id',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/tasks.html',
+                        controller  : 'TaskController'
+                   }
+                }
+            })
+            // route for the task details page
+            .state('app.taskDetails', {
+                url: 'Tasks/:id',
+                views: {
+                    'content@': {
+                        templateUrl : 'views/taskDetails.html',
+                        controller  : 'TaskDetailController'
                    }
                 }
             })

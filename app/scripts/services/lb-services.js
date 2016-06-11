@@ -11,7 +11,8 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
 
 (function(window, angular, undefined) {'use strict';
 
-var urlBase = "/api";
+//Reference to bluemix loopback server
+var urlBase = "https://chronogram-loopback-api-server.mybluemix.net/api/";
 var authHeader = 'authorization';
 
 function getHost(url) {
@@ -1126,13 +1127,13 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Dishes
- * @header lbServices.Dishes
+ * @name lbServices.Chronograms
+ * @header lbServices.Chronograms
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Dishes` model.
+ * A $resource object for interacting with the `Chronograms` model.
  *
  * ## Example
  *
@@ -1142,173 +1143,174 @@ module.factory(
  *
  */
 module.factory(
-  "Dishes",
+  "Chronograms",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/dishes/:id",
+      urlBase + "/chronograms/:id",
       { 'id': '@id' },
       {
 
-        // INTERNAL. Use Dishes.customers.findById() instead.
+        // INTERNAL. Use Chronograms.customers.findById() instead.
         "prototype$__findById__customers": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/customers/:fk",
+          //url: urlBase + "/Chronograms/:id/customers/:fk",
+          url: urlBase + "/chronograms/:id",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.customers.destroyById() instead.
+        // INTERNAL. Use Chronograms.customers.destroyById() instead.
         "prototype$__destroyById__customers": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/customers/:fk",
+          url: urlBase + "/chronograms/:id",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.customers.updateById() instead.
+        // INTERNAL. Use Chronograms.customers.updateById() instead.
         "prototype$__updateById__customers": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/customers/:fk",
+          url: urlBase + "/Chronograms/:id/customers/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Dishes.comments.findById() instead.
-        "prototype$__findById__comments": {
+        // INTERNAL. Use Chronograms.Histories.findById() instead.
+        "prototype$__findById__Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/comments/:fk",
+          url: urlBase + "/Chronograms/:id/Histories/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.comments.destroyById() instead.
-        "prototype$__destroyById__comments": {
+        // INTERNAL. Use Chronograms.Histories.destroyById() instead.
+        "prototype$__destroyById__Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/comments/:fk",
+          url: urlBase + "/Chronograms/:id/Histories/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.comments.updateById() instead.
-        "prototype$__updateById__comments": {
+        // INTERNAL. Use Chronograms.Histories.updateById() instead.
+        "prototype$__updateById__Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/comments/:fk",
+          url: urlBase + "/Chronograms/:id/Histories/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Dishes.favorites.findById() instead.
+        // INTERNAL. Use Chronograms.favorites.findById() instead.
         "prototype$__findById__favorites": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/favorites/:fk",
+          url: urlBase + "/Chronograms/:id/favorites/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.favorites.destroyById() instead.
+        // INTERNAL. Use Chronograms.favorites.destroyById() instead.
         "prototype$__destroyById__favorites": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/favorites/:fk",
+          url: urlBase + "/Chronograms/:id/favorites/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.favorites.updateById() instead.
+        // INTERNAL. Use Chronograms.favorites.updateById() instead.
         "prototype$__updateById__favorites": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/favorites/:fk",
+          url: urlBase + "/Chronograms/:id/favorites/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Dishes.customers() instead.
+        // INTERNAL. Use Chronograms.customers() instead.
         "prototype$__get__customers": {
           isArray: true,
-          url: urlBase + "/dishes/:id/customers",
+          url: urlBase + "/Chronograms/:id/customers",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.customers.create() instead.
+        // INTERNAL. Use Chronograms.customers.create() instead.
         "prototype$__create__customers": {
-          url: urlBase + "/dishes/:id/customers",
+          url: urlBase + "/Chronograms/:id/customers",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.customers.destroyAll() instead.
+        // INTERNAL. Use Chronograms.customers.destroyAll() instead.
         "prototype$__delete__customers": {
-          url: urlBase + "/dishes/:id/customers",
+          url: urlBase + "/Chronograms/:id/customers",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.customers.count() instead.
+        // INTERNAL. Use Chronograms.customers.count() instead.
         "prototype$__count__customers": {
-          url: urlBase + "/dishes/:id/customers/count",
+          url: urlBase + "/Chronograms/:id/customers/count",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.comments() instead.
-        "prototype$__get__comments": {
+        // INTERNAL. Use Chronograms.Histories() instead.
+        "prototype$__get__Histories": {
           isArray: true,
-          url: urlBase + "/dishes/:id/comments",
+          url: urlBase + "/Chronograms/:id/Histories",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.comments.create() instead.
-        "prototype$__create__comments": {
-          url: urlBase + "/dishes/:id/comments",
+        // INTERNAL. Use Chronograms.Histories.create() instead.
+        "prototype$__create__Histories": {
+          url: urlBase + "/Chronograms/:id/Histories",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.comments.destroyAll() instead.
-        "prototype$__delete__comments": {
-          url: urlBase + "/dishes/:id/comments",
+        // INTERNAL. Use Chronograms.Histories.destroyAll() instead.
+        "prototype$__delete__Histories": {
+          url: urlBase + "/Chronograms/:id/Histories",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.comments.count() instead.
-        "prototype$__count__comments": {
-          url: urlBase + "/dishes/:id/comments/count",
+        // INTERNAL. Use Chronograms.Histories.count() instead.
+        "prototype$__count__Histories": {
+          url: urlBase + "/Chronograms/:id/Histories/count",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.favorites() instead.
+        // INTERNAL. Use Chronograms.favorites() instead.
         "prototype$__get__favorites": {
           isArray: true,
-          url: urlBase + "/dishes/:id/favorites",
+          url: urlBase + "/Chronograms/:id/favorites",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.favorites.create() instead.
+        // INTERNAL. Use Chronograms.favorites.create() instead.
         "prototype$__create__favorites": {
-          url: urlBase + "/dishes/:id/favorites",
+          url: urlBase + "/Chronograms/:id/favorites",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.favorites.destroyAll() instead.
+        // INTERNAL. Use Chronograms.favorites.destroyAll() instead.
         "prototype$__delete__favorites": {
-          url: urlBase + "/dishes/:id/favorites",
+          url: urlBase + "/Chronograms/:id/favorites",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.favorites.count() instead.
+        // INTERNAL. Use Chronograms.favorites.count() instead.
         "prototype$__count__favorites": {
-          url: urlBase + "/dishes/:id/favorites/count",
+          url: urlBase + "/Chronograms/:id/favorites/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#create
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#create
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1335,18 +1337,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/dishes",
+          url: urlBase + "/chronograms",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#createMany
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#createMany
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1373,19 +1375,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         "createMany": {
           isArray: true,
-          url: urlBase + "/dishes",
+          url: urlBase + "/Chronograms",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#upsert
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#upsert
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1412,18 +1414,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/dishes",
+          url: urlBase + "/Chronograms",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#exists
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#exists
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1448,14 +1450,14 @@ module.factory(
          *  - `exists` – `{boolean=}` - 
          */
         "exists": {
-          url: urlBase + "/dishes/:id/exists",
+          url: urlBase + "/Chronograms/:id/exists",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#findById
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#findById
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1479,18 +1481,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/dishes/:id",
+          url: urlBase + "/chronograms/:id",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#find
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#find
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1512,19 +1514,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         "find": {
           isArray: true,
-          url: urlBase + "/dishes",
+          url: urlBase + "/chronograms",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#findOne
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#findOne
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1546,18 +1548,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/dishes/findOne",
+          url: urlBase + "/chronograms/findOne",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#updateAll
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#updateAll
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1584,14 +1586,14 @@ module.factory(
          * The number of instances updated
          */
         "updateAll": {
-          url: urlBase + "/dishes/update",
+          url: urlBase + "/chronograms/update",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#deleteById
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#deleteById
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1613,18 +1615,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         "deleteById": {
-          url: urlBase + "/dishes/:id",
+          url: urlBase + "/chronograms/:id",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#count
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#count
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1649,14 +1651,14 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/dishes/count",
+          url: urlBase + "/chronograms/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#prototype$updateAttributes
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#prototype$updateAttributes
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1682,18 +1684,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/dishes/:id",
+          url: urlBase + "/chronograms/:id",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#createChangeStream
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#createChangeStream
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1723,19 +1725,19 @@ module.factory(
          *  - `changes` – `{ReadableStream=}` - 
          */
         "createChangeStream": {
-          url: urlBase + "/dishes/change-stream",
+          url: urlBase + "/chronograms/change-stream",
           method: "POST"
         },
 
-        // INTERNAL. Use Comments.dishes() instead.
-        "::get::Comments::dishes": {
-          url: urlBase + "/Comments/:id/dishes",
+        // INTERNAL. Use Histories.Chronograms() instead.
+        "::get::Histories::Chronograms": {
+          url: urlBase + "/Histories/:id/Chronograms",
           method: "GET"
         },
 
-        // INTERNAL. Use Favorites.dishes() instead.
-        "::get::Favorites::dishes": {
-          url: urlBase + "/Favorites/:id/dishes",
+        // INTERNAL. Use Favorites.Chronograms() instead.
+        "::get::Favorites::Chronograms": {
+          url: urlBase + "/Favorites/:id/Chronograms",
           method: "GET"
         },
       }
@@ -1745,8 +1747,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#updateOrCreate
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#updateOrCreate
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1773,15 +1775,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         R["updateOrCreate"] = R["upsert"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#update
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#update
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1811,8 +1813,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#destroyById
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#destroyById
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1834,15 +1836,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         R["destroyById"] = R["deleteById"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#removeById
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#removeById
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
@@ -1864,7 +1866,7 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
         R["removeById"] = R["deleteById"];
@@ -1872,37 +1874,37 @@ module.factory(
 
     /**
     * @ngdoc property
-    * @name lbServices.Dishes#modelName
-    * @propertyOf lbServices.Dishes
+    * @name lbServices.Chronograms#modelName
+    * @propertyOf lbServices.Chronograms
     * @description
     * The name of the model represented by this $resource,
-    * i.e. `Dishes`.
+    * i.e. `Chronograms`.
     */
-    R.modelName = "Dishes";
+    R.modelName = "Chronograms";
 
     /**
      * @ngdoc object
-     * @name lbServices.Dishes.customers
-     * @header lbServices.Dishes.customers
+     * @name lbServices.Chronograms.customers
+     * @header lbServices.Chronograms.customers
      * @object
      * @description
      *
-     * The object `Dishes.customers` groups methods
-     * manipulating `Customer` instances related to `Dishes`.
+     * The object `Chronograms.customers` groups methods
+     * manipulating `Customer` instances related to `Chronograms`.
      *
-     * Call {@link lbServices.Dishes#customers Dishes.customers()}
+     * Call {@link lbServices.Chronograms#customers Chronograms.customers()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#customers
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#customers
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
-         * Queries customers of dishes.
+         * Queries customers of Chronograms.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1927,18 +1929,18 @@ module.factory(
          */
         R.customers = function() {
           var TargetResource = $injector.get("Customer");
-          var action = TargetResource["::get::dishes::customers"];
+          var action = TargetResource["::get::Chronograms::customers"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.customers#count
-         * @methodOf lbServices.Dishes.customers
+         * @name lbServices.Chronograms.customers#count
+         * @methodOf lbServices.Chronograms.customers
          *
          * @description
          *
-         * Counts customers of dishes.
+         * Counts customers of Chronograms.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1962,14 +1964,14 @@ module.factory(
          */
         R.customers.count = function() {
           var TargetResource = $injector.get("Customer");
-          var action = TargetResource["::count::dishes::customers"];
+          var action = TargetResource["::count::Chronograms::customers"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.customers#create
-         * @methodOf lbServices.Dishes.customers
+         * @name lbServices.Chronograms.customers#create
+         * @methodOf lbServices.Chronograms.customers
          *
          * @description
          *
@@ -2000,14 +2002,14 @@ module.factory(
          */
         R.customers.create = function() {
           var TargetResource = $injector.get("Customer");
-          var action = TargetResource["::create::dishes::customers"];
+          var action = TargetResource["::create::Chronograms::customers"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.customers#createMany
-         * @methodOf lbServices.Dishes.customers
+         * @name lbServices.Chronograms.customers#createMany
+         * @methodOf lbServices.Chronograms.customers
          *
          * @description
          *
@@ -2038,14 +2040,14 @@ module.factory(
          */
         R.customers.createMany = function() {
           var TargetResource = $injector.get("Customer");
-          var action = TargetResource["::createMany::dishes::customers"];
+          var action = TargetResource["::createMany::Chronograms::customers"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.customers#destroyAll
-         * @methodOf lbServices.Dishes.customers
+         * @name lbServices.Chronograms.customers#destroyAll
+         * @methodOf lbServices.Chronograms.customers
          *
          * @description
          *
@@ -2069,14 +2071,14 @@ module.factory(
          */
         R.customers.destroyAll = function() {
           var TargetResource = $injector.get("Customer");
-          var action = TargetResource["::delete::dishes::customers"];
+          var action = TargetResource["::delete::Chronograms::customers"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.customers#destroyById
-         * @methodOf lbServices.Dishes.customers
+         * @name lbServices.Chronograms.customers#destroyById
+         * @methodOf lbServices.Chronograms.customers
          *
          * @description
          *
@@ -2102,14 +2104,14 @@ module.factory(
          */
         R.customers.destroyById = function() {
           var TargetResource = $injector.get("Customer");
-          var action = TargetResource["::destroyById::dishes::customers"];
+          var action = TargetResource["::destroyById::Chronograms::customers"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.customers#findById
-         * @methodOf lbServices.Dishes.customers
+         * @name lbServices.Chronograms.customers#findById
+         * @methodOf lbServices.Chronograms.customers
          *
          * @description
          *
@@ -2138,14 +2140,14 @@ module.factory(
          */
         R.customers.findById = function() {
           var TargetResource = $injector.get("Customer");
-          var action = TargetResource["::findById::dishes::customers"];
+          var action = TargetResource["::findById::Chronograms::customers"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.customers#updateById
-         * @methodOf lbServices.Dishes.customers
+         * @name lbServices.Chronograms.customers#updateById
+         * @methodOf lbServices.Chronograms.customers
          *
          * @description
          *
@@ -2178,32 +2180,32 @@ module.factory(
          */
         R.customers.updateById = function() {
           var TargetResource = $injector.get("Customer");
-          var action = TargetResource["::updateById::dishes::customers"];
+          var action = TargetResource["::updateById::Chronograms::customers"];
           return action.apply(R, arguments);
         };
     /**
      * @ngdoc object
-     * @name lbServices.Dishes.comments
-     * @header lbServices.Dishes.comments
+     * @name lbServices.Chronograms.Histories
+     * @header lbServices.Chronograms.Histories
      * @object
      * @description
      *
-     * The object `Dishes.comments` groups methods
-     * manipulating `Comments` instances related to `Dishes`.
+     * The object `Chronograms.Histories` groups methods
+     * manipulating `Histories` instances related to `Chronograms`.
      *
-     * Call {@link lbServices.Dishes#comments Dishes.comments()}
+     * Call {@link lbServices.Chronograms#Histories Chronograms.Histories()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#comments
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#Histories
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
-         * Queries comments of dishes.
+         * Queries Histories of Chronograms.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2223,23 +2225,23 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::get::dishes::comments"];
+        R.Histories = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::get::Chronograms::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.comments#count
-         * @methodOf lbServices.Dishes.comments
+         * @name lbServices.Chronograms.Histories#count
+         * @methodOf lbServices.Chronograms.Histories
          *
          * @description
          *
-         * Counts comments of dishes.
+         * Counts Histories of Chronograms.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2261,20 +2263,20 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        R.comments.count = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::count::dishes::comments"];
+        R.Histories.count = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::count::Chronograms::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.comments#create
-         * @methodOf lbServices.Dishes.comments
+         * @name lbServices.Chronograms.Histories#create
+         * @methodOf lbServices.Chronograms.Histories
          *
          * @description
          *
-         * Creates a new instance in comments of this model.
+         * Creates a new instance in Histories of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2296,23 +2298,23 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments.create = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::create::dishes::comments"];
+        R.Histories.create = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::create::Chronograms::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.comments#createMany
-         * @methodOf lbServices.Dishes.comments
+         * @name lbServices.Chronograms.Histories#createMany
+         * @methodOf lbServices.Chronograms.Histories
          *
          * @description
          *
-         * Creates a new instance in comments of this model.
+         * Creates a new instance in Histories of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2334,23 +2336,23 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments.createMany = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::createMany::dishes::comments"];
+        R.Histories.createMany = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::createMany::Chronograms::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.comments#destroyAll
-         * @methodOf lbServices.Dishes.comments
+         * @name lbServices.Chronograms.Histories#destroyAll
+         * @methodOf lbServices.Chronograms.Histories
          *
          * @description
          *
-         * Deletes all comments of this model.
+         * Deletes all Histories of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2368,26 +2370,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.comments.destroyAll = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::delete::dishes::comments"];
+        R.Histories.destroyAll = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::delete::Chronograms::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.comments#destroyById
-         * @methodOf lbServices.Dishes.comments
+         * @name lbServices.Chronograms.Histories#destroyById
+         * @methodOf lbServices.Chronograms.Histories
          *
          * @description
          *
-         * Delete a related item by id for comments.
+         * Delete a related item by id for Histories.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `fk` – `{*}` - Foreign key for comments
+         *  - `fk` – `{*}` - Foreign key for Histories
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2401,26 +2403,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.comments.destroyById = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::destroyById::dishes::comments"];
+        R.Histories.destroyById = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::destroyById::Chronograms::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.comments#findById
-         * @methodOf lbServices.Dishes.comments
+         * @name lbServices.Chronograms.Histories#findById
+         * @methodOf lbServices.Chronograms.Histories
          *
          * @description
          *
-         * Find a related item by id for comments.
+         * Find a related item by id for Histories.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `fk` – `{*}` - Foreign key for comments
+         *  - `fk` – `{*}` - Foreign key for Histories
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -2434,29 +2436,29 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments.findById = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::findById::dishes::comments"];
+        R.Histories.findById = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::findById::Chronograms::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.comments#updateById
-         * @methodOf lbServices.Dishes.comments
+         * @name lbServices.Chronograms.Histories#updateById
+         * @methodOf lbServices.Chronograms.Histories
          *
          * @description
          *
-         * Update a related item by id for comments.
+         * Update a related item by id for Histories.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - PersistedModel id
          *
-         *  - `fk` – `{*}` - Foreign key for comments
+         *  - `fk` – `{*}` - Foreign key for Histories
          *
          * @param {Object} postData Request data.
          *
@@ -2474,37 +2476,37 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments.updateById = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::updateById::dishes::comments"];
+        R.Histories.updateById = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::updateById::Chronograms::Histories"];
           return action.apply(R, arguments);
         };
     /**
      * @ngdoc object
-     * @name lbServices.Dishes.favorites
-     * @header lbServices.Dishes.favorites
+     * @name lbServices.Chronograms.favorites
+     * @header lbServices.Chronograms.favorites
      * @object
      * @description
      *
-     * The object `Dishes.favorites` groups methods
-     * manipulating `Favorites` instances related to `Dishes`.
+     * The object `Chronograms.favorites` groups methods
+     * manipulating `Favorites` instances related to `Chronograms`.
      *
-     * Call {@link lbServices.Dishes#favorites Dishes.favorites()}
+     * Call {@link lbServices.Chronograms#favorites Chronograms.favorites()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes#favorites
-         * @methodOf lbServices.Dishes
+         * @name lbServices.Chronograms#favorites
+         * @methodOf lbServices.Chronograms
          *
          * @description
          *
-         * Queries favorites of dishes.
+         * Queries favorites of Chronograms.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2529,18 +2531,18 @@ module.factory(
          */
         R.favorites = function() {
           var TargetResource = $injector.get("Favorites");
-          var action = TargetResource["::get::dishes::favorites"];
+          var action = TargetResource["::get::Chronograms::favorites"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.favorites#count
-         * @methodOf lbServices.Dishes.favorites
+         * @name lbServices.Chronograms.favorites#count
+         * @methodOf lbServices.Chronograms.favorites
          *
          * @description
          *
-         * Counts favorites of dishes.
+         * Counts favorites of Chronograms.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -2564,14 +2566,14 @@ module.factory(
          */
         R.favorites.count = function() {
           var TargetResource = $injector.get("Favorites");
-          var action = TargetResource["::count::dishes::favorites"];
+          var action = TargetResource["::count::Chronograms::favorites"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.favorites#create
-         * @methodOf lbServices.Dishes.favorites
+         * @name lbServices.Chronograms.favorites#create
+         * @methodOf lbServices.Chronograms.favorites
          *
          * @description
          *
@@ -2602,14 +2604,14 @@ module.factory(
          */
         R.favorites.create = function() {
           var TargetResource = $injector.get("Favorites");
-          var action = TargetResource["::create::dishes::favorites"];
+          var action = TargetResource["::create::Chronograms::favorites"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.favorites#createMany
-         * @methodOf lbServices.Dishes.favorites
+         * @name lbServices.Chronograms.favorites#createMany
+         * @methodOf lbServices.Chronograms.favorites
          *
          * @description
          *
@@ -2640,14 +2642,14 @@ module.factory(
          */
         R.favorites.createMany = function() {
           var TargetResource = $injector.get("Favorites");
-          var action = TargetResource["::createMany::dishes::favorites"];
+          var action = TargetResource["::createMany::Chronograms::favorites"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.favorites#destroyAll
-         * @methodOf lbServices.Dishes.favorites
+         * @name lbServices.Chronograms.favorites#destroyAll
+         * @methodOf lbServices.Chronograms.favorites
          *
          * @description
          *
@@ -2671,14 +2673,14 @@ module.factory(
          */
         R.favorites.destroyAll = function() {
           var TargetResource = $injector.get("Favorites");
-          var action = TargetResource["::delete::dishes::favorites"];
+          var action = TargetResource["::delete::Chronograms::favorites"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.favorites#destroyById
-         * @methodOf lbServices.Dishes.favorites
+         * @name lbServices.Chronograms.favorites#destroyById
+         * @methodOf lbServices.Chronograms.favorites
          *
          * @description
          *
@@ -2704,14 +2706,14 @@ module.factory(
          */
         R.favorites.destroyById = function() {
           var TargetResource = $injector.get("Favorites");
-          var action = TargetResource["::destroyById::dishes::favorites"];
+          var action = TargetResource["::destroyById::Chronograms::favorites"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.favorites#findById
-         * @methodOf lbServices.Dishes.favorites
+         * @name lbServices.Chronograms.favorites#findById
+         * @methodOf lbServices.Chronograms.favorites
          *
          * @description
          *
@@ -2740,14 +2742,14 @@ module.factory(
          */
         R.favorites.findById = function() {
           var TargetResource = $injector.get("Favorites");
-          var action = TargetResource["::findById::dishes::favorites"];
+          var action = TargetResource["::findById::Chronograms::favorites"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Dishes.favorites#updateById
-         * @methodOf lbServices.Dishes.favorites
+         * @name lbServices.Chronograms.favorites#updateById
+         * @methodOf lbServices.Chronograms.favorites
          *
          * @description
          *
@@ -2780,7 +2782,7 @@ module.factory(
          */
         R.favorites.updateById = function() {
           var TargetResource = $injector.get("Favorites");
-          var action = TargetResource["::updateById::dishes::favorites"];
+          var action = TargetResource["::updateById::Chronograms::favorites"];
           return action.apply(R, arguments);
         };
 
@@ -2927,30 +2929,30 @@ module.factory(
           method: "PUT"
         },
 
-        // INTERNAL. Use Customer.comments.findById() instead.
-        "prototype$__findById__comments": {
+        // INTERNAL. Use Customer.Histories.findById() instead.
+        "prototype$__findById__Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Customers/:id/comments/:fk",
+          url: urlBase + "/Customers/:id/Histories/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Customer.comments.destroyById() instead.
-        "prototype$__destroyById__comments": {
+        // INTERNAL. Use Customer.Histories.destroyById() instead.
+        "prototype$__destroyById__Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Customers/:id/comments/:fk",
+          url: urlBase + "/Customers/:id/Histories/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Customer.comments.updateById() instead.
-        "prototype$__updateById__comments": {
+        // INTERNAL. Use Customer.Histories.updateById() instead.
+        "prototype$__updateById__Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Customers/:id/comments/:fk",
+          url: urlBase + "/Customers/:id/Histories/:fk",
           method: "PUT"
         },
 
@@ -3118,28 +3120,28 @@ module.factory(
           method: "GET"
         },
 
-        // INTERNAL. Use Customer.comments() instead.
-        "prototype$__get__comments": {
+        // INTERNAL. Use Customer.Histories() instead.
+        "prototype$__get__Histories": {
           isArray: true,
-          url: urlBase + "/Customers/:id/comments",
+          url: urlBase + "/Customers/:id/Histories",
           method: "GET"
         },
 
-        // INTERNAL. Use Customer.comments.create() instead.
-        "prototype$__create__comments": {
-          url: urlBase + "/Customers/:id/comments",
+        // INTERNAL. Use Customer.Histories.create() instead.
+        "prototype$__create__Histories": {
+          url: urlBase + "/Customers/:id/Histories",
           method: "POST"
         },
 
-        // INTERNAL. Use Customer.comments.destroyAll() instead.
-        "prototype$__delete__comments": {
-          url: urlBase + "/Customers/:id/comments",
+        // INTERNAL. Use Customer.Histories.destroyAll() instead.
+        "prototype$__delete__Histories": {
+          url: urlBase + "/Customers/:id/Histories",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Customer.comments.count() instead.
-        "prototype$__count__comments": {
-          url: urlBase + "/Customers/:id/comments/count",
+        // INTERNAL. Use Customer.Histories.count() instead.
+        "prototype$__count__Histories": {
+          url: urlBase + "/Customers/:id/Histories/count",
           method: "GET"
         },
 
@@ -3757,68 +3759,68 @@ module.factory(
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.customers.findById() instead.
-        "::findById::dishes::customers": {
+        // INTERNAL. Use Chronograms.customers.findById() instead.
+        "::findById::Chronograms::customers": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/customers/:fk",
+          url: urlBase + "/Chronograms/:id/customers/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.customers.destroyById() instead.
-        "::destroyById::dishes::customers": {
+        // INTERNAL. Use Chronograms.customers.destroyById() instead.
+        "::destroyById::Chronograms::customers": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/customers/:fk",
+          url: urlBase + "/Chronograms/:id/customers/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.customers.updateById() instead.
-        "::updateById::dishes::customers": {
+        // INTERNAL. Use Chronograms.customers.updateById() instead.
+        "::updateById::Chronograms::customers": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/customers/:fk",
+          url: urlBase + "/Chronograms/:id/customers/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Dishes.customers() instead.
-        "::get::dishes::customers": {
+        // INTERNAL. Use Chronograms.customers() instead.
+        "::get::Chronograms::customers": {
           isArray: true,
-          url: urlBase + "/dishes/:id/customers",
+          url: urlBase + "/Chronograms/:id/customers",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.customers.create() instead.
-        "::create::dishes::customers": {
-          url: urlBase + "/dishes/:id/customers",
+        // INTERNAL. Use Chronograms.customers.create() instead.
+        "::create::Chronograms::customers": {
+          url: urlBase + "/Chronograms/:id/customers",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.customers.createMany() instead.
-        "::createMany::dishes::customers": {
+        // INTERNAL. Use Chronograms.customers.createMany() instead.
+        "::createMany::Chronograms::customers": {
           isArray: true,
-          url: urlBase + "/dishes/:id/customers",
+          url: urlBase + "/Chronograms/:id/customers",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.customers.destroyAll() instead.
-        "::delete::dishes::customers": {
-          url: urlBase + "/dishes/:id/customers",
+        // INTERNAL. Use Chronograms.customers.destroyAll() instead.
+        "::delete::Chronograms::customers": {
+          url: urlBase + "/Chronograms/:id/customers",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.customers.count() instead.
-        "::count::dishes::customers": {
-          url: urlBase + "/dishes/:id/customers/count",
+        // INTERNAL. Use Chronograms.customers.count() instead.
+        "::count::Chronograms::customers": {
+          url: urlBase + "/Chronograms/:id/customers/count",
           method: "GET"
         },
 
-        // INTERNAL. Use Comments.customer() instead.
-        "::get::Comments::customer": {
-          url: urlBase + "/Comments/:id/customer",
+        // INTERNAL. Use Histories.customer() instead.
+        "::get::Histories::customer": {
+          url: urlBase + "/Histories/:id/customer",
           method: "GET"
         },
 
@@ -4051,27 +4053,27 @@ module.factory(
 
     /**
      * @ngdoc object
-     * @name lbServices.Customer.comments
-     * @header lbServices.Customer.comments
+     * @name lbServices.Customer.Histories
+     * @header lbServices.Customer.Histories
      * @object
      * @description
      *
-     * The object `Customer.comments` groups methods
-     * manipulating `Comments` instances related to `Customer`.
+     * The object `Customer.Histories` groups methods
+     * manipulating `Histories` instances related to `Customer`.
      *
-     * Call {@link lbServices.Customer#comments Customer.comments()}
+     * Call {@link lbServices.Customer#Histories Customer.Histories()}
      * to query all related instances.
      */
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Customer#comments
+         * @name lbServices.Customer#Histories
          * @methodOf lbServices.Customer
          *
          * @description
          *
-         * Queries comments of Customer.
+         * Queries Histories of Customer.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -4091,23 +4093,23 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::get::Customer::comments"];
+        R.Histories = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::get::Customer::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Customer.comments#count
-         * @methodOf lbServices.Customer.comments
+         * @name lbServices.Customer.Histories#count
+         * @methodOf lbServices.Customer.Histories
          *
          * @description
          *
-         * Counts comments of Customer.
+         * Counts Histories of Customer.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -4129,20 +4131,20 @@ module.factory(
          *
          *  - `count` – `{number=}` - 
          */
-        R.comments.count = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::count::Customer::comments"];
+        R.Histories.count = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::count::Customer::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Customer.comments#create
-         * @methodOf lbServices.Customer.comments
+         * @name lbServices.Customer.Histories#create
+         * @methodOf lbServices.Customer.Histories
          *
          * @description
          *
-         * Creates a new instance in comments of this model.
+         * Creates a new instance in Histories of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -4164,23 +4166,23 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments.create = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::create::Customer::comments"];
+        R.Histories.create = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::create::Customer::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Customer.comments#createMany
-         * @methodOf lbServices.Customer.comments
+         * @name lbServices.Customer.Histories#createMany
+         * @methodOf lbServices.Customer.Histories
          *
          * @description
          *
-         * Creates a new instance in comments of this model.
+         * Creates a new instance in Histories of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -4202,23 +4204,23 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments.createMany = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::createMany::Customer::comments"];
+        R.Histories.createMany = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::createMany::Customer::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Customer.comments#destroyAll
-         * @methodOf lbServices.Customer.comments
+         * @name lbServices.Customer.Histories#destroyAll
+         * @methodOf lbServices.Customer.Histories
          *
          * @description
          *
-         * Deletes all comments of this model.
+         * Deletes all Histories of this model.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -4236,26 +4238,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.comments.destroyAll = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::delete::Customer::comments"];
+        R.Histories.destroyAll = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::delete::Customer::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Customer.comments#destroyById
-         * @methodOf lbServices.Customer.comments
+         * @name lbServices.Customer.Histories#destroyById
+         * @methodOf lbServices.Customer.Histories
          *
          * @description
          *
-         * Delete a related item by id for comments.
+         * Delete a related item by id for Histories.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `fk` – `{*}` - Foreign key for comments
+         *  - `fk` – `{*}` - Foreign key for Histories
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -4269,26 +4271,26 @@ module.factory(
          *
          * This method returns no data.
          */
-        R.comments.destroyById = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::destroyById::Customer::comments"];
+        R.Histories.destroyById = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::destroyById::Customer::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Customer.comments#findById
-         * @methodOf lbServices.Customer.comments
+         * @name lbServices.Customer.Histories#findById
+         * @methodOf lbServices.Customer.Histories
          *
          * @description
          *
-         * Find a related item by id for comments.
+         * Find a related item by id for Histories.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `fk` – `{*}` - Foreign key for comments
+         *  - `fk` – `{*}` - Foreign key for Histories
          *
          * @param {function(Object,Object)=} successCb
          *   Success callback with two arguments: `value`, `responseHeaders`.
@@ -4302,29 +4304,29 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments.findById = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::findById::Customer::comments"];
+        R.Histories.findById = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::findById::Customer::Histories"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Customer.comments#updateById
-         * @methodOf lbServices.Customer.comments
+         * @name lbServices.Customer.Histories#updateById
+         * @methodOf lbServices.Customer.Histories
          *
          * @description
          *
-         * Update a related item by id for comments.
+         * Update a related item by id for Histories.
          *
          * @param {Object=} parameters Request parameters.
          *
          *  - `id` – `{*}` - User id
          *
-         *  - `fk` – `{*}` - Foreign key for comments
+         *  - `fk` – `{*}` - Foreign key for Histories
          *
          * @param {Object} postData Request data.
          *
@@ -4342,12 +4344,12 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
-        R.comments.updateById = function() {
-          var TargetResource = $injector.get("Comments");
-          var action = TargetResource["::updateById::Customer::comments"];
+        R.Histories.updateById = function() {
+          var TargetResource = $injector.get("Histories");
+          var action = TargetResource["::updateById::Customer::Histories"];
           return action.apply(R, arguments);
         };
     /**
@@ -4657,13 +4659,13 @@ module.factory(
 
 /**
  * @ngdoc object
- * @name lbServices.Comments
- * @header lbServices.Comments
+ * @name lbServices.Histories
+ * @header lbServices.Histories
  * @object
  *
  * @description
  *
- * A $resource object for interacting with the `Comments` model.
+ * A $resource object for interacting with the `Histories` model.
  *
  * ## Example
  *
@@ -4673,29 +4675,29 @@ module.factory(
  *
  */
 module.factory(
-  "Comments",
+  "Histories",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/Comments/:id",
+      urlBase + "/Histories/:id",
       { 'id': '@id' },
       {
 
-        // INTERNAL. Use Comments.dishes() instead.
-        "prototype$__get__dishes": {
-          url: urlBase + "/Comments/:id/dishes",
+        // INTERNAL. Use Histories.Chronograms() instead.
+        "prototype$__get__Chronograms": {
+          url: urlBase + "/Histories/:id/Chronograms",
           method: "GET"
         },
 
-        // INTERNAL. Use Comments.customer() instead.
+        // INTERNAL. Use Histories.customer() instead.
         "prototype$__get__customer": {
-          url: urlBase + "/Comments/:id/customer",
+          url: urlBase + "/Histories/:id/customer",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#create
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#create
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -4722,18 +4724,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         "create": {
-          url: urlBase + "/Comments",
+          url: urlBase + "/Histories",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#createMany
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#createMany
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -4760,19 +4762,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         "createMany": {
           isArray: true,
-          url: urlBase + "/Comments",
+          url: urlBase + "/Histories",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#upsert
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#upsert
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -4799,18 +4801,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         "upsert": {
-          url: urlBase + "/Comments",
+          url: urlBase + "/Histories",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#exists
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#exists
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -4835,14 +4837,14 @@ module.factory(
          *  - `exists` – `{boolean=}` - 
          */
         "exists": {
-          url: urlBase + "/Comments/:id/exists",
+          url: urlBase + "/Histories/:id/exists",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#findById
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#findById
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -4866,18 +4868,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         "findById": {
-          url: urlBase + "/Comments/:id",
+          url: urlBase + "/Histories/:id",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#find
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#find
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -4899,19 +4901,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         "find": {
           isArray: true,
-          url: urlBase + "/Comments",
+          url: urlBase + "/Histories",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#findOne
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#findOne
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -4933,18 +4935,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         "findOne": {
-          url: urlBase + "/Comments/findOne",
+          url: urlBase + "/Histories/findOne",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#updateAll
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#updateAll
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -4971,14 +4973,14 @@ module.factory(
          * The number of instances updated
          */
         "updateAll": {
-          url: urlBase + "/Comments/update",
+          url: urlBase + "/Histories/update",
           method: "POST"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#deleteById
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#deleteById
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -5000,18 +5002,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         "deleteById": {
-          url: urlBase + "/Comments/:id",
+          url: urlBase + "/Histories/:id",
           method: "DELETE"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#count
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#count
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -5036,14 +5038,14 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/Comments/count",
+          url: urlBase + "/Histories/count",
           method: "GET"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#prototype$updateAttributes
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#prototype$updateAttributes
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -5069,18 +5071,18 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/Comments/:id",
+          url: urlBase + "/Histories/:id",
           method: "PUT"
         },
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#createChangeStream
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#createChangeStream
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -5110,125 +5112,125 @@ module.factory(
          *  - `changes` – `{ReadableStream=}` - 
          */
         "createChangeStream": {
-          url: urlBase + "/Comments/change-stream",
+          url: urlBase + "/Histories/change-stream",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.comments.findById() instead.
-        "::findById::dishes::comments": {
+        // INTERNAL. Use Chronograms.Histories.findById() instead.
+        "::findById::Chronograms::Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/comments/:fk",
+          url: urlBase + "/Chronograms/:id/Histories/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.comments.destroyById() instead.
-        "::destroyById::dishes::comments": {
+        // INTERNAL. Use Chronograms.Histories.destroyById() instead.
+        "::destroyById::Chronograms::Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/comments/:fk",
+          url: urlBase + "/Chronograms/:id/Histories/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.comments.updateById() instead.
-        "::updateById::dishes::comments": {
+        // INTERNAL. Use Chronograms.Histories.updateById() instead.
+        "::updateById::Chronograms::Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/comments/:fk",
+          url: urlBase + "/Chronograms/:id/Histories/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Dishes.comments() instead.
-        "::get::dishes::comments": {
+        // INTERNAL. Use Chronograms.Histories() instead.
+        "::get::Chronograms::Histories": {
           isArray: true,
-          url: urlBase + "/dishes/:id/comments",
+          url: urlBase + "/Chronograms/:id/Histories",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.comments.create() instead.
-        "::create::dishes::comments": {
-          url: urlBase + "/dishes/:id/comments",
+        // INTERNAL. Use Chronograms.Histories.create() instead.
+        "::create::Chronograms::Histories": {
+          url: urlBase + "/Chronograms/:id/Histories",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.comments.createMany() instead.
-        "::createMany::dishes::comments": {
+        // INTERNAL. Use Chronograms.Histories.createMany() instead.
+        "::createMany::Chronograms::Histories": {
           isArray: true,
-          url: urlBase + "/dishes/:id/comments",
+          url: urlBase + "/Chronograms/:id/Histories",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.comments.destroyAll() instead.
-        "::delete::dishes::comments": {
-          url: urlBase + "/dishes/:id/comments",
+        // INTERNAL. Use Chronograms.Histories.destroyAll() instead.
+        "::delete::Chronograms::Histories": {
+          url: urlBase + "/Chronograms/:id/Histories",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.comments.count() instead.
-        "::count::dishes::comments": {
-          url: urlBase + "/dishes/:id/comments/count",
+        // INTERNAL. Use Chronograms.Histories.count() instead.
+        "::count::Chronograms::Histories": {
+          url: urlBase + "/Chronograms/:id/Histories/count",
           method: "GET"
         },
 
-        // INTERNAL. Use Customer.comments.findById() instead.
-        "::findById::Customer::comments": {
+        // INTERNAL. Use Customer.Histories.findById() instead.
+        "::findById::Customer::Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Customers/:id/comments/:fk",
+          url: urlBase + "/Customers/:id/Histories/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Customer.comments.destroyById() instead.
-        "::destroyById::Customer::comments": {
+        // INTERNAL. Use Customer.Histories.destroyById() instead.
+        "::destroyById::Customer::Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Customers/:id/comments/:fk",
+          url: urlBase + "/Customers/:id/Histories/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Customer.comments.updateById() instead.
-        "::updateById::Customer::comments": {
+        // INTERNAL. Use Customer.Histories.updateById() instead.
+        "::updateById::Customer::Histories": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/Customers/:id/comments/:fk",
+          url: urlBase + "/Customers/:id/Histories/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Customer.comments() instead.
-        "::get::Customer::comments": {
+        // INTERNAL. Use Customer.Histories() instead.
+        "::get::Customer::Histories": {
           isArray: true,
-          url: urlBase + "/Customers/:id/comments",
+          url: urlBase + "/Customers/:id/Histories",
           method: "GET"
         },
 
-        // INTERNAL. Use Customer.comments.create() instead.
-        "::create::Customer::comments": {
-          url: urlBase + "/Customers/:id/comments",
+        // INTERNAL. Use Customer.Histories.create() instead.
+        "::create::Customer::Histories": {
+          url: urlBase + "/Customers/:id/Histories",
           method: "POST"
         },
 
-        // INTERNAL. Use Customer.comments.createMany() instead.
-        "::createMany::Customer::comments": {
+        // INTERNAL. Use Customer.Histories.createMany() instead.
+        "::createMany::Customer::Histories": {
           isArray: true,
-          url: urlBase + "/Customers/:id/comments",
+          url: urlBase + "/Customers/:id/Histories",
           method: "POST"
         },
 
-        // INTERNAL. Use Customer.comments.destroyAll() instead.
-        "::delete::Customer::comments": {
-          url: urlBase + "/Customers/:id/comments",
+        // INTERNAL. Use Customer.Histories.destroyAll() instead.
+        "::delete::Customer::Histories": {
+          url: urlBase + "/Customers/:id/Histories",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Customer.comments.count() instead.
-        "::count::Customer::comments": {
-          url: urlBase + "/Customers/:id/comments/count",
+        // INTERNAL. Use Customer.Histories.count() instead.
+        "::count::Customer::Histories": {
+          url: urlBase + "/Customers/:id/Histories/count",
           method: "GET"
         },
       }
@@ -5238,8 +5240,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#updateOrCreate
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#updateOrCreate
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -5266,15 +5268,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         R["updateOrCreate"] = R["upsert"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#update
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#update
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -5304,8 +5306,8 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#destroyById
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#destroyById
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -5327,15 +5329,15 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         R["destroyById"] = R["deleteById"];
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#removeById
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#removeById
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -5357,7 +5359,7 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Comments` object.)
+         * This usually means the response is a `Histories` object.)
          * </em>
          */
         R["removeById"] = R["deleteById"];
@@ -5365,23 +5367,23 @@ module.factory(
 
     /**
     * @ngdoc property
-    * @name lbServices.Comments#modelName
-    * @propertyOf lbServices.Comments
+    * @name lbServices.Histories#modelName
+    * @propertyOf lbServices.Histories
     * @description
     * The name of the model represented by this $resource,
-    * i.e. `Comments`.
+    * i.e. `Histories`.
     */
-    R.modelName = "Comments";
+    R.modelName = "Histories";
 
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#dishes
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#Chronograms
+         * @methodOf lbServices.Histories
          *
          * @description
          *
-         * Fetches belongsTo relation dishes.
+         * Fetches belongsTo relation Chronograms.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -5401,19 +5403,19 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
-        R.dishes = function() {
-          var TargetResource = $injector.get("Dishes");
-          var action = TargetResource["::get::Comments::dishes"];
+        R.Chronograms = function() {
+          var TargetResource = $injector.get("Chronograms");
+          var action = TargetResource["::get::Histories::Chronograms"];
           return action.apply(R, arguments);
         };
 
         /**
          * @ngdoc method
-         * @name lbServices.Comments#customer
-         * @methodOf lbServices.Comments
+         * @name lbServices.Histories#customer
+         * @methodOf lbServices.Histories
          *
          * @description
          *
@@ -5442,7 +5444,7 @@ module.factory(
          */
         R.customer = function() {
           var TargetResource = $injector.get("Customer");
-          var action = TargetResource["::get::Comments::customer"];
+          var action = TargetResource["::get::Histories::customer"];
           return action.apply(R, arguments);
         };
 
@@ -5466,11 +5468,12 @@ module.factory(
  * for an example of using this object.
  *
  */
+                                       
 module.factory(
-  "Promotions",
+  "Tasks",
   ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
     var R = Resource(
-      urlBase + "/promotions/:id",
+      urlBase + "/Tasks/:id",
       { 'id': '@id' },
       {
 
@@ -5508,7 +5511,7 @@ module.factory(
          * </em>
          */
         "create": {
-          url: urlBase + "/promotions",
+          url: urlBase + "/Tasks",
           method: "POST"
         },
 
@@ -5547,7 +5550,7 @@ module.factory(
          */
         "createMany": {
           isArray: true,
-          url: urlBase + "/promotions",
+          url: urlBase + "/Tasks",
           method: "POST"
         },
 
@@ -5585,7 +5588,7 @@ module.factory(
          * </em>
          */
         "upsert": {
-          url: urlBase + "/promotions",
+          url: urlBase + "/Tasks",
           method: "PUT"
         },
 
@@ -5617,7 +5620,7 @@ module.factory(
          *  - `exists` – `{boolean=}` - 
          */
         "exists": {
-          url: urlBase + "/promotions/:id/exists",
+          url: urlBase + "/Tasks/:id/exists",
           method: "GET"
         },
 
@@ -5652,7 +5655,7 @@ module.factory(
          * </em>
          */
         "findById": {
-          url: urlBase + "/promotions/:id",
+          url: urlBase + "/Tasks/:id",
           method: "GET"
         },
 
@@ -5686,7 +5689,7 @@ module.factory(
          */
         "find": {
           isArray: true,
-          url: urlBase + "/promotions",
+          url: urlBase + "/Tasks",
           method: "GET"
         },
 
@@ -5719,7 +5722,7 @@ module.factory(
          * </em>
          */
         "findOne": {
-          url: urlBase + "/promotions/findOne",
+          url: urlBase + "/Tasks/findOne",
           method: "GET"
         },
 
@@ -5753,7 +5756,7 @@ module.factory(
          * The number of instances updated
          */
         "updateAll": {
-          url: urlBase + "/promotions/update",
+          url: urlBase + "/Tasks/update",
           method: "POST"
         },
 
@@ -5786,7 +5789,7 @@ module.factory(
          * </em>
          */
         "deleteById": {
-          url: urlBase + "/promotions/:id",
+          url: urlBase + "/Tasks/:id",
           method: "DELETE"
         },
 
@@ -5818,7 +5821,7 @@ module.factory(
          *  - `count` – `{number=}` - 
          */
         "count": {
-          url: urlBase + "/promotions/count",
+          url: urlBase + "/Tasks/count",
           method: "GET"
         },
 
@@ -5855,7 +5858,7 @@ module.factory(
          * </em>
          */
         "prototype$updateAttributes": {
-          url: urlBase + "/promotions/:id",
+          url: urlBase + "/Tasks/:id",
           method: "PUT"
         },
 
@@ -5892,7 +5895,7 @@ module.factory(
          *  - `changes` – `{ReadableStream=}` - 
          */
         "createChangeStream": {
-          url: urlBase + "/promotions/change-stream",
+          url: urlBase + "/Tasks/change-stream",
           method: "POST"
         },
       }
@@ -6035,7 +6038,7 @@ module.factory(
     * The name of the model represented by this $resource,
     * i.e. `Promotions`.
     */
-    R.modelName = "Promotions";
+    R.modelName = "Tasks";
 
 
     return R;
@@ -6058,580 +6061,7 @@ module.factory(
  * for an example of using this object.
  *
  */
-module.factory(
-  "Leaders",
-  ['LoopBackResource', 'LoopBackAuth', '$injector', function(Resource, LoopBackAuth, $injector) {
-    var R = Resource(
-      urlBase + "/leaders/:id",
-      { 'id': '@id' },
-      {
 
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#create
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Create a new instance of the model and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        "create": {
-          url: urlBase + "/leaders",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#createMany
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Create a new instance of the model and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        "createMany": {
-          isArray: true,
-          url: urlBase + "/leaders",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#upsert
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        "upsert": {
-          url: urlBase + "/leaders",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#exists
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Check whether a model instance exists in the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `exists` – `{boolean=}` - 
-         */
-        "exists": {
-          url: urlBase + "/leaders/:id/exists",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#findById
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Find a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         *  - `filter` – `{object=}` - Filter defining fields and include
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        "findById": {
-          url: urlBase + "/leaders/:id",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#find
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Find all instances of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Array.<Object>,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Array.<Object>} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        "find": {
-          isArray: true,
-          url: urlBase + "/leaders",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#findOne
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Find first instance of the model matched by filter from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `filter` – `{object=}` - Filter defining fields, where, include, order, offset, and limit
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        "findOne": {
-          url: urlBase + "/leaders/findOne",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#updateAll
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * The number of instances updated
-         */
-        "updateAll": {
-          url: urlBase + "/leaders/update",
-          method: "POST"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#deleteById
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        "deleteById": {
-          url: urlBase + "/leaders/:id",
-          method: "DELETE"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#count
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Count instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `count` – `{number=}` - 
-         */
-        "count": {
-          url: urlBase + "/leaders/count",
-          method: "GET"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#prototype$updateAttributes
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Update attributes for a model instance and persist it into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - PersistedModel id
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        "prototype$updateAttributes": {
-          url: urlBase + "/leaders/:id",
-          method: "PUT"
-        },
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#createChangeStream
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Create a change stream.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         *  - `options` – `{object=}` - 
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * Data properties:
-         *
-         *  - `changes` – `{ReadableStream=}` - 
-         */
-        "createChangeStream": {
-          url: urlBase + "/leaders/change-stream",
-          method: "POST"
-        },
-      }
-    );
-
-
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#updateOrCreate
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Update an existing model instance or insert a new one into the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *   This method does not accept any parameters.
-         *   Supply an empty object or omit this argument altogether.
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        R["updateOrCreate"] = R["upsert"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#update
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Update instances of the model matched by where from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `where` – `{object=}` - Criteria to match model instances
-         *
-         * @param {Object} postData Request data.
-         *
-         * This method expects a subset of model properties as request parameters.
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * The number of instances updated
-         */
-        R["update"] = R["updateAll"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#destroyById
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        R["destroyById"] = R["deleteById"];
-
-        /**
-         * @ngdoc method
-         * @name lbServices.Leaders#removeById
-         * @methodOf lbServices.Leaders
-         *
-         * @description
-         *
-         * Delete a model instance by id from the data source.
-         *
-         * @param {Object=} parameters Request parameters.
-         *
-         *  - `id` – `{*}` - Model id
-         *
-         * @param {function(Object,Object)=} successCb
-         *   Success callback with two arguments: `value`, `responseHeaders`.
-         *
-         * @param {function(Object)=} errorCb Error callback with one argument:
-         *   `httpResponse`.
-         *
-         * @returns {Object} An empty reference that will be
-         *   populated with the actual data once the response is returned
-         *   from the server.
-         *
-         * <em>
-         * (The remote method definition does not provide any description.
-         * This usually means the response is a `Leaders` object.)
-         * </em>
-         */
-        R["removeById"] = R["deleteById"];
-
-
-    /**
-    * @ngdoc property
-    * @name lbServices.Leaders#modelName
-    * @propertyOf lbServices.Leaders
-    * @description
-    * The name of the model represented by this $resource,
-    * i.e. `Leaders`.
-    */
-    R.modelName = "Leaders";
-
-
-    return R;
-  }]);
 
 /**
  * @ngdoc object
@@ -7042,9 +6472,9 @@ module.factory(
           method: "GET"
         },
 
-        // INTERNAL. Use Favorites.dishes() instead.
-        "prototype$__get__dishes": {
-          url: urlBase + "/Favorites/:id/dishes",
+        // INTERNAL. Use Favorites.Chronograms() instead.
+        "prototype$__get__Chronograms": {
+          url: urlBase + "/Favorites/:id/Chronograms",
           method: "GET"
         },
 
@@ -7470,62 +6900,62 @@ module.factory(
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.favorites.findById() instead.
-        "::findById::dishes::favorites": {
+        // INTERNAL. Use Chronograms.favorites.findById() instead.
+        "::findById::Chronograms::favorites": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/favorites/:fk",
+          url: urlBase + "/Chronograms/:id/favorites/:fk",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.favorites.destroyById() instead.
-        "::destroyById::dishes::favorites": {
+        // INTERNAL. Use Chronograms.favorites.destroyById() instead.
+        "::destroyById::Chronograms::favorites": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/favorites/:fk",
+          url: urlBase + "/Chronograms/:id/favorites/:fk",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.favorites.updateById() instead.
-        "::updateById::dishes::favorites": {
+        // INTERNAL. Use Chronograms.favorites.updateById() instead.
+        "::updateById::Chronograms::favorites": {
           params: {
           'fk': '@fk'
           },
-          url: urlBase + "/dishes/:id/favorites/:fk",
+          url: urlBase + "/Chronograms/:id/favorites/:fk",
           method: "PUT"
         },
 
-        // INTERNAL. Use Dishes.favorites() instead.
-        "::get::dishes::favorites": {
+        // INTERNAL. Use Chronograms.favorites() instead.
+        "::get::Chronograms::favorites": {
           isArray: true,
-          url: urlBase + "/dishes/:id/favorites",
+          url: urlBase + "/Chronograms/:id/favorites",
           method: "GET"
         },
 
-        // INTERNAL. Use Dishes.favorites.create() instead.
-        "::create::dishes::favorites": {
-          url: urlBase + "/dishes/:id/favorites",
+        // INTERNAL. Use Chronograms.favorites.create() instead.
+        "::create::Chronograms::favorites": {
+          url: urlBase + "/Chronograms/:id/favorites",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.favorites.createMany() instead.
-        "::createMany::dishes::favorites": {
+        // INTERNAL. Use Chronograms.favorites.createMany() instead.
+        "::createMany::Chronograms::favorites": {
           isArray: true,
-          url: urlBase + "/dishes/:id/favorites",
+          url: urlBase + "/Chronograms/:id/favorites",
           method: "POST"
         },
 
-        // INTERNAL. Use Dishes.favorites.destroyAll() instead.
-        "::delete::dishes::favorites": {
-          url: urlBase + "/dishes/:id/favorites",
+        // INTERNAL. Use Chronograms.favorites.destroyAll() instead.
+        "::delete::Chronograms::favorites": {
+          url: urlBase + "/Chronograms/:id/favorites",
           method: "DELETE"
         },
 
-        // INTERNAL. Use Dishes.favorites.count() instead.
-        "::count::dishes::favorites": {
-          url: urlBase + "/dishes/:id/favorites/count",
+        // INTERNAL. Use Chronograms.favorites.count() instead.
+        "::count::Chronograms::favorites": {
+          url: urlBase + "/Chronograms/:id/favorites/count",
           method: "GET"
         },
 
@@ -7768,12 +7198,12 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Favorites#dishes
+         * @name lbServices.Favorites#Chronograms
          * @methodOf lbServices.Favorites
          *
          * @description
          *
-         * Fetches belongsTo relation dishes.
+         * Fetches belongsTo relation Chronograms.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -7793,12 +7223,12 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Dishes` object.)
+         * This usually means the response is a `Chronograms` object.)
          * </em>
          */
-        R.dishes = function() {
-          var TargetResource = $injector.get("Dishes");
-          var action = TargetResource["::get::Favorites::dishes"];
+        R.Chronograms = function() {
+          var TargetResource = $injector.get("Chronograms");
+          var action = TargetResource["::get::Favorites::Chronograms"];
           return action.apply(R, arguments);
         };
 

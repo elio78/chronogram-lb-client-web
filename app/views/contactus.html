@@ -8,7 +8,7 @@
                </ul>
             </div>
             <div class="col-xs-12">
-               <h3>Contact Us</h3>
+               <h3>Contact me</h3>
                <hr>
             </div>
         </div>
@@ -18,15 +18,15 @@
               <h3>Location Information</h3> 
            </div>
             <div class="col-xs-12 col-sm-4 col-sm-offset-1">
-                   <h5>Our Address</h5>
+                   <h5>My Address</h5>
                     <address style="font-size: 100%">
-		              121, Clear Water Bay Road<br>
-		              Clear Water Bay, Kowloon<br>
-		              HONG KONG<br>
+		              This information is confidential<br>
+		              <br>
+		              FRANCE<br>
 		              <i class="fa fa-phone"></i>: +852 1234 5678<br>
 		              <i class="fa fa-fax"></i>: +852 8765 4321<br>
 		              <i class="fa fa-envelope"></i>: 
-                        <a href="mailto:confusion@food.net">confusion@food.net</a>
+                        <a href="mailto:elio@canale-parola.eu">elio@canale-parola.eu</a>
 		           </address>
             </div>
             <div class="col-xs-12 col-sm-6 col-sm-offset-1">
@@ -36,14 +36,14 @@
                 <div class="btn-group" role="group" aria-label="...">
                     <a type="button" class="btn btn-primary" href="tel:+85212345678"><i class="fa fa-phone"></i> Call</a>
                     <a type="button" class="btn btn-info"><i class="fa fa-skype"></i> Skype</a>
-                    <a type="button" class="btn btn-success" href="mailto:confusion@food.net"><i class="fa fa-envelope-o"></i> Email</a>
+                    <a type="button" class="btn btn-success" href="mailto:elio@canale-parola.eu"><i class="fa fa-envelope-o"></i> Email</a>
                 </div>
             </div>
         </div>
 
         <div class="row row-content">
            <div class="col-xs-12">
-              <h3>Send us your Feedback</h3> 
+              <h3>Send me your Feedback</h3> 
            </div>
             <div class="col-xs-12 col-sm-9">
                 <form class="form-horizontal" role="form" name="feedbackForm" ng-submit="sendFeedback()" novalidate>
@@ -93,7 +93,7 @@
                             <label class="checkbox-inline">
                                 <input type="checkbox" name="approve" value=""
                                 ng-model="feedback.agree">
-                                <strong>May we contact you?</strong>
+                                <strong></strong>
                             </label>
                         </div>
                         <div class="col-sm-3 col-sm-offset-1" ng-show="feedback.agree">
@@ -109,7 +109,7 @@
                         <label for="feedback" class="col-sm-2 control-label">Your Feedback</label>
                         <div class="col-sm-10">
                             <textarea class="form-control" id="feedback" name="feedback" rows="12"
-                                ng-model="feedback.comments"></textarea>
+                                ng-model="feedback.Histories"></textarea>
                         </div>
                     </div> 
                     <div class="form-group">
@@ -125,7 +125,7 @@
               <p>Contact Tel.: ({{feedback.tel.areaCode}}) {{feedback.tel.number}}</p>
               <p>Contact Email: {{feedback.email}}</p>
               <p ng-show="feedback.agree">Contact by: {{feedback.mychannel}}</p>
-              <p>Comments: {{feedback.comments}}</p>
+              <p>Histories: {{feedback.Histories}}</p>
             </div>
        </div>
 

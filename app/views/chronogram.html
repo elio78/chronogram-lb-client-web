@@ -25,6 +25,16 @@
                     type="button">
                     {{showFavorites ? 'Hide Favorite Button':'Show Favorite Button'}}
                 </button>
+ 		     <button ng-click="openNewChronogram()" class="btn btn-xs btn-info pull-right"
+                        type="button">
+                            Create Chronogram
+                </button>
+ 		    <button ng-click="toggleDelete()" class="btn btn-xs btn-warning pull-right"
+                    type="button">
+		{{showDelete ? 'Hide Delete Button':'Show Delete Button'}}
+                </button>
+            </div>
+            <div class="col-xs-12">
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation"
                     ng-class="{active:isSelected(1)}">
@@ -52,24 +62,27 @@
                      aria-controls="terminated"
                      role="tab">Terminated</a></li>
                 </ul>
-             
+            </div>
                 <div class="tab-content">
                <ul class="media-list tab-pane fade in active">
-                <li class="media" ng-repeat="dish in Chronograms | filter:filtText">
+                <li class="media" ng-repeat="chronogram in Chronograms | filter:filtText">
                     <div class="media-left media-middle">
-                        <a ui-sref="app.chronogramDetails({id: dish.id})">
-                        <img class="media-object img-thumbnail"
-                        ng-src={{"images/"+chronogram.status+".png"}} alt="chronogram">
+                        <a ui-sref="app.chronogramDetails({id: chronogram.id})">
+                        <img class="media-object img-thumbnail" ng-src="/images/{{chronogram.status}}.png" style="width: 100px; height: 100px" alt="chronogram">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{dish.name}}
-                        <span class="label label-danger label-xs">{{dish.label}}</span>
-                        <span class="badge">{{dish.price/100 | currency}}</span></h2>
-                        <p ng-show="showDetails">{{dish.description}}</p>
-                         <button  ng-show="showFavorites" ng-click="addToFavorites(dish.id)" class="btn btn-xs btn-default pull-right"
+                        <h2 class="media-heading">{{chronogram.name}}
+                        <span class="label label-info label-xs">{{chronogram.status}}</span>
+                        <span class="badge">{{chronogram.plannedDuration}}</span></h2>
+                        <p ng-show="showDetails">{{chronogram.description}}</p>
+                         <button  ng-show="showFavorites" ng-click="addToFavorites(chronogram.id)" class="btn btn-xs btn-default pull-right"
                     type="button">
                           <i class="fa fa-heart"></i>
+                        </button>
+			<button  ng-show="showDelete" ng-click="deleteChronogram(chronogram.id)" class="btn btn-xs btn-default pull-right"
+                    type="button">
+                          <i class="fa fa-trash"></i>
                         </button>
                     </div>
                 </li>

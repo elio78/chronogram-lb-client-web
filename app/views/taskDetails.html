@@ -1,0 +1,83 @@
+<div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Tasks</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Task details</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+            <div class="col-xs-12" ng-if="!showTask">
+                <h3>{{message}}</h3>
+            </div>
+            <div class="col-xs-12" ng-if="showTask">
+                <button ng-click="openNewHistory()" class="btn btn-xs btn-info pull-right"
+                        type="button">
+                            Create History
+                    </button>
+ 		         <button ng-click="toggleAction()" class="btn btn-xs btn-warning pull-right"
+                    type="button">
+		          {{showAction ? 'Hide Action Buttons':'Show Action Buttons'}}
+                </button>
+            </div>
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"
+                    ng-class="{active:isSelected(1)}">
+                    <a ng-click="select(1)"
+                     aria-controls="All"
+                    role="tab">Details</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(2)}">
+                </ul>
+            </div>
+                <div class="tab-content">  
+                    <div class="media-body">
+                        <div class="tab-content">
+                            <ul class="media-list tab-pane fade in active">
+                                <li class="media">
+                                    <div class="media-left media-middle">
+                                        <a>
+                                        <img class="media-object img-thumbnail" ng-src="/images/{{task.status}}.png" style="width: 100px; height: 100px" alt="task">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <h2 class="media-heading">{{task.name}}
+                                        <span class="label label-danger label-xs">{{task.status}}</span>
+                                        <span class="badge">{{task.plannedDuration}}</span></h2>
+                                        <p>{{task.description}}</p>
+                                        <p>{{task.id}}</p>
+                                        <button  ng-show="showAction" ng-click="changeTaskStatus('started')" class="btn btn-xs btn-success pull-right" type="button"> <i class="fa fa-play"></i>
+                                        </button>
+                                        <button  ng-show="showAction" ng-click="changeTaskStatus('delayed')" class="btn btn-xs btn-warning pull-right" type="button"> <i class="fa fa-pause"></i>
+                                        </button>
+                                        <button  ng-show="showAction" ng-click="changeTaskStatus('terminated')" class="btn btn-xs btn-danger pull-right" type="button"> <i class="fa fa-stop"></i>
+                                        </button>
+                                        <button  ng-show="showAction" ng-click="openNewHistory()" class="btn btn-xs btn-info pull-right" type="button"> <i class="fa fa-pencil"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                                
+                                <li class="media" ng-repeat="history in histories | filter:{tasksId: task.id}">
+                                    <blockquote>
+                                    <div class="media-body">
+                                        <h4>{{history.description}}</h4>
+                                        <h5>{{history.postedBy+" : "+history.createdAt | date:'MMM d, y h:mm:ss a'}}</h5>
+                                    </div>
+                                    </blockquote>
+</li>
+
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

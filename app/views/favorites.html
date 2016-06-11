@@ -52,16 +52,16 @@
                <ul class="media-list tab-pane fade in active">
                 <li class="media" ng-repeat="favorite in favorites | filter:filtText">
                     <div class="media-left media-middle">
-                        <a ui-sref="app.dishdetails({id: favorite.dishes.id})">
+                        <a ui-sref="app.chronogramDetails({id: favorite.Chronograms.id})">
                         <img class="media-object img-thumbnail"
-                        ng-src={{favorite.dishes.image}} alt="Uthappizza">
+                        ng-src={{favorite.Chronograms.image}} alt="Uthappizza">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{favorite.dishes.name}}
-                        <span class="label label-danger label-xs">{{favorite.dishes.label}}</span>
-                        <span class="badge">{{favorite.dishes.price/100 | currency}}</span></h2>
-                        <p ng-show="showDetails">{{favorite.dishes.description}}</p>
+                        <h2 class="media-heading">{{favorite.Chronograms.name}}
+                        <span class="label label-danger label-xs">{{favorite.Chronograms.label}}</span>
+                        <span class="badge">{{favorite.Chronograms.price/100 | currency}}</span></h2>
+                        <p ng-show="showDetails">{{favorite.Chronograms.description}}</p>
                          <button  ng-show="showDelete" ng-click="deleteFavorite(favorite.id)" class="btn btn-xs btn-danger pull-right"
                     type="button">
                           <i class="fa fa-remove"></i>

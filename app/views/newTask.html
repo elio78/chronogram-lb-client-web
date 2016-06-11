@@ -1,0 +1,30 @@
+<div class="ngdialog-message">
+        <div class="">
+            <h3>Create a new task</h3>
+        </div>
+        <div class="">&nbsp;</div>
+        <div class="">
+            <form ng-submit="doCreateTask()">
+                <div class="form-group">
+                    <label class="sr-only" for="name">Name</label>
+                    <input type="text" class="form-control input-sm" id="name" placeholder="Enter Task name" ng-model="newTask.name">
+                </div>
+
+          <div class="form-group">
+                    <label class="sr-only" for="description">Description</label>
+                    <input type="textarea" rows="5" class="form-control input-sm" id="description" placeholder="Task description (main target)" ng-model="newTask.description">
+		  </div>
+
+		  <div class="form-group">
+                    <label class="sr-only" for="date">Start Date</label>
+                    <input type="text" class="form-control input-sm" id="date" placeholder="Task planned start date (yyyy-mm-dd)" ng-model="newTask.plannedStartDate" value="{{date | date: 'yyyy-MM-dd' }}">
+		  </div>
+
+                <button type="submit" class="btn btn-info btn-sm">Create</button>
+                <button type="button" class="btn btn-default btn-sm" ng-click=closeThisDialog("Cancel")>Cancel</button> &nbsp; &nbsp;
+            </form>
+        </div>
+        <div>
+
+        </div>
+    </div>

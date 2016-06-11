@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('confusionApp')
+  .module('chronogramApp')
   .factory('AuthService', ['Customer', '$q', '$rootScope', 'ngDialog', function(Customer, $q,
       $rootScope, ngDialog) {
     function login(loginData) {
