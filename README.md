@@ -16,5 +16,5 @@ eg. my directory is :
 4 drwxrwxrwx.  2 apache apache 4096 11 juin  17:10 views
 [elio@localhost chronogram-lb-client-web]$ ls -als
 
-
+You can also download the file delivery.tar.gz and decompress under the web root directory (/var/www/html for linux)
 Enjoy
